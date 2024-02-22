@@ -1,0 +1,37 @@
+{
+    "channels": [
+      {
+        "name": "Channel 0",
+        "channel": "P0",
+        "sound": "/home/pi/Documents/edrum/src/resources/audio/bass.wav",
+        "debouncing_time": 0.12,
+        "threshold_value": 7000,
+        "isActive": true
+      },
+      {
+        "name": "Channel 1",
+        "channel": "P1",
+        "sound": "/home/pi/Documents/edrum/src/resources/audio/tone.wav",
+        "debouncing_time": 0.12,
+        "threshold_value": 10000,
+        "isActive": true
+      },
+      {
+        "name": "Channel 2",
+        "channel": "P0",
+        "sound": "/home/pi/Documents/edrum/src/resources/audio/slap.wav",
+        "debouncing_time": 0.12,
+        "threshold_value": 7000,
+        "isActive": true
+      },
+      {
+        "name": "Channel 3",
+        "channel": "P3",
+        "sound": "slap.wav",
+        "debouncing_time": 0.12,
+        "threshold_value": 10000,
+        "isActive": true
+      }
+     
+    ]
+  }

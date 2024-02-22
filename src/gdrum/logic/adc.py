@@ -1,34 +1,48 @@
+import busio
+import board
+import adafruit_ads1x15.ads1115 as ADS
+from config_manager import load_config, get_channel_config
+from sensor_channel import SensorChannel
+
+i2c = busio.I2C(board.SCL, board.SDA)
+ads = ADS.ADS1115(i2c)
+
+config = load_config()
+
+channels = []
+for ch_config in config["channels"]:
+    channel_params = get_channel_config(ads, ch_config)
+    channel = SensorChannel(**channel_params)
+    channels.append(channel)
+
+"""
 import pygame
 import board
 import busio
 import time
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+
 
 channels_info = {
-    "Channel_0": {"name": "Channel 0", "method": None, "isActive": False, "sound": "bass.wav", "intital_value":0,"last_activation_time":0},
-    "Channel_1": {"name": "Channel 1", "method": None, "isActive": False, "sound": "slap.wav", "intital_value":0,"last_activation_time":0},
-    "Channel_2": {"name": "Channel 2", "method": None, "isActive": False, "sound": "tone.wav", "intital_value":0,"last_activation_time":0},
-    "Channel_3": {"name": "Channel 3", "method": None, "isActive": False, "sound": "sound3.wav","intital_value":0,"last_activation_time":0}
+    "Channel_0": {"name": "Channel 0", "method": None, "isActive": False, "sound": "bass.wav", "intital_value":0,"last_activation_time":0,"threshold_value":3000},
+    "Channel_1": {"name": "Channel 1", "method": None, "isActive": False, "sound": "slap.wav", "intital_value":0,"last_activation_time":0,"threshold_value":10000},
+    "Channel_2": {"name": "Channel 2", "method": None, "isActive": False, "sound": "tone.wav", "intital_value":0,"last_activation_time":0,"threshold_value":10000},
+    "Channel_3": {"name": "Channel 3", "method": None, "isActive": False, "sound": "sound3.wav","intital_value":0,"last_activation_time":0,"threshold_value":0}
 }
 
 
 channels = [ADS.P0,ADS.P1,ADS.P2,ADS.P3]
-DEBOUNCE_TIME = 0.08
+DEBOUNCE_TIME = 0.2
 CHANNEL_THRESHOLD = 4000 # verify if the channel is active
-VALUE_THRESHOLD = 800
+VALUE_THRESHOLD = 12000
 pygame.mixer.init()
 
-slap = pygame.mixer.Sound('slap.wav')
-tone = pygame.mixer.Sound('tone.wav')
-bass = pygame.mixer.Sound('bass.wav')
 
 # Initialize the I2C interface
 i2c = busio.I2C(board.SCL, board.SDA)
 # Create an ADS1115 object
-ads = ADS.ADS1115(i2c, gain=1, data_rate=250)
+ads = ADS.ADS1115(i2c)
 
 # Define the analog input channel
 #chn0 = AnalogIn(ads, ADS.P0)
@@ -63,7 +77,7 @@ def verify_channels():
 			channels_info[f"Channel_{i}"]["method"]=lambda ai=analog_in: (ai.value, ai.voltage)
 			channels_info[f"Channel_{i}"]["isActive"]= True
 			channels_info[f"Channel_{i}"]["initial_value"]= initial_value
-		time.sleep(0.05)
+		
 
 def read_channels():
 	current_time = time.time()
@@ -72,39 +86,24 @@ def read_channels():
 			elapsed_time = current_time - channel_info.get("last_activation_time", 0)
 			if elapsed_time >= DEBOUNCE_TIME:
 				value, voltage = channel_info["method"]()
-				if value > VALUE_THRESHOLD:
+				#print(f"sound value channel {channel_info['name']}: {value}")
+				#time.sleep(0.5)
+				if value > channel_info['threshold_value']:
 					channel_info['last_activation_time'] = current_time
 					# Reproducir el sonido asociado
 					sound = pygame.mixer.Sound(channel_info['sound'])
 					sound.play()
 					print(f"sound value channel {channel_info['name']}: {value}")
 					channel_info['last_activation_time'] = current_time
+	time.sleep(0.05)
+
 
 def main():
 	verify_channels()
 	while  True:
 		try:
-			read_channels()
-			
-			"""
-			if chn0.value > THRESHOLD:
-				slap.play()
-				time.sleep(0.1)
-				print("Slap")
-			if chn1.value > THRESHOLD:
-				tone.play()
-				time.sleep(0.1)
-				print("Tone")
-			if chn2.value > THRESHOLD_BASS:
-				bass.play()
-				time.sleep(0.1)
-				print("Bass")
-				"""
-			#time.sleep(0.2)
-		except Exception as e:
-			print(f"Error al leer del ADC: {e}")
-			time.sleep(0.1) 
-   
+			read_channels() 
 
 if __name__ == "__main__":
     main()
+"""
