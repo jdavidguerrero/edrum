@@ -1,37 +1,36 @@
 {
     "channels": [
-      {
-        "name": "Channel 0",
-        "channel": "P0",
-        "sound": "/home/pi/Documents/edrum/src/resources/audio/bass.wav",
-        "debouncing_time": 0.12,
-        "threshold_value": 7000,
-        "isActive": true
-      },
-      {
-        "name": "Channel 1",
-        "channel": "P1",
-        "sound": "/home/pi/Documents/edrum/src/resources/audio/tone.wav",
-        "debouncing_time": 0.12,
-        "threshold_value": 10000,
-        "isActive": true
-      },
-      {
-        "name": "Channel 2",
-        "channel": "P0",
-        "sound": "/home/pi/Documents/edrum/src/resources/audio/slap.wav",
-        "debouncing_time": 0.12,
-        "threshold_value": 7000,
-        "isActive": true
-      },
-      {
-        "name": "Channel 3",
-        "channel": "P3",
-        "sound": "slap.wav",
-        "debouncing_time": 0.12,
-        "threshold_value": 10000,
-        "isActive": true
-      }
-     
+        {
+            "name": "Channel 0",
+            "channel": "P0",
+            "sound": "/home/pi/Documents/edrum/src/gdrum/resources/audio/bass.wav",
+            "debounce_time": 0.22911741256713866,
+            "threshold_value": 12090.666666666666,
+            "isActive": true
+        },
+        {
+            "name": "Channel 1",
+            "channel": "P1",
+            "sound": "/home/pi/Documents/edrum/src/gdrum/resources/audio/tone.wav",
+            "debounce_time": 0.10416581153869629,
+            "threshold_value": 13529.0,
+            "isActive": true
+        },
+        {
+            "name": "Channel 2",
+            "channel": "P2",
+            "sound": "/home/pi/Documents/edrum/src/gdrum/resources/audio/slap.wav",
+            "debounce_time": 0.16222536087036133,
+            "threshold_value": 13529.5,
+            "isActive": true
+        },
+        {
+            "name": "Channel 3",
+            "channel": "P3",
+            "sound": "slap.wav",
+            "debounce_time": 0.12,
+            "threshold_value": 10000,
+            "isActive": false
+        }
     ]
-  }
+}
