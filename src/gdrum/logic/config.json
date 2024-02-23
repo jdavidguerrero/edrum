@@ -3,31 +3,31 @@
         {
             "name": "Channel 0",
             "channel": "P0",
-            "sound": "/home/pi/Documents/edrum/src/gdrum/resources/audio/bass.wav",
-            "debounce_time": 0.22911741256713866,
-            "threshold_value": 12090.666666666666,
+            "sound_file": "/home/pi/Documents/edrum/src/gdrum/resources/audio/slap.wav",
+            "debounce_time": 0.15185080528259278,
+            "threshold_value": 12005.333333333334,
             "isActive": true
         },
         {
             "name": "Channel 1",
             "channel": "P1",
-            "sound": "/home/pi/Documents/edrum/src/gdrum/resources/audio/tone.wav",
-            "debounce_time": 0.10416581153869629,
-            "threshold_value": 13529.0,
+            "sound_file": "/home/pi/Documents/edrum/src/gdrum/resources/audio/tone.wav",
+            "debounce_time": 0.15463597297668457,
+            "threshold_value": 12440.333333333334,
             "isActive": true
         },
         {
             "name": "Channel 2",
             "channel": "P2",
-            "sound": "/home/pi/Documents/edrum/src/gdrum/resources/audio/slap.wav",
-            "debounce_time": 0.16222536087036133,
-            "threshold_value": 13529.5,
+            "sound_file": "/home/pi/Documents/edrum/src/gdrum/resources/audio/slap.wav",
+            "debounce_time": 0.15210901260375977,
+            "threshold_value": 12881.333333333334,
             "isActive": true
         },
         {
             "name": "Channel 3",
             "channel": "P3",
-            "sound": "slap.wav",
+            "sound_file": "/home/pi/Documents/edrum/src/gdrum/resources/audio/slap.wav",
             "debounce_time": 0.12,
             "threshold_value": 10000,
             "isActive": false

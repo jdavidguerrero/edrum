@@ -14,7 +14,7 @@ def get_channel_config(ads, channel_config):
     return {
         "ads": ads,
         "channel": channel,
-        "sound_file": channel_config["sound"],
+        "sound_file": channel_config["sound_file"],
         "threshold_value": channel_config["threshold_value"],
         "is_active": channel_config["isActive"],
         "debounce_time": channel_config.get("debounce_time", 0.1) 
